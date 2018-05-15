@@ -3,6 +3,6 @@ package iengine;
 public class Main {
 
     public static void main(String[] args) {
-        fileInput file = new fileInput("src/iengine/test.txt");
+        FileInput file = new FileInput("src/iengine/test.txt");
     }
 }
