@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class fileInput{
+public class FileInput{
 	//stores contents of txt file
 	List<String[]> KB = new ArrayList<String[]>();
 	String query = "";
 	
 	//constructor
-	public fileInput(String filePath){
+	public FileInput(String filePath){
 		readMap(filePath);
 	}
 	

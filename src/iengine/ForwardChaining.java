@@ -3,13 +3,13 @@ package iengine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class forwardChaining {
+public class ForwardChaining {
 	List<String> trueVar = new ArrayList<String>();
 	List<String[]> equations = new ArrayList<String[]>();
 	List<String[]> solvedEquations = new ArrayList<String[]>();
 	String query;
 	
-	forwardChaining(List<String[]> KB, String _query){
+	ForwardChaining(List<String[]> KB, String _query){
 		query = _query;
 		tellKB(KB);
 	}
