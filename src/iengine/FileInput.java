@@ -76,4 +76,8 @@ public class FileInput{
 	List<String[]> getKB(){
 		return KB;
 	}
+	
+	String getQuery() {
+		return query;
+	}
 }
