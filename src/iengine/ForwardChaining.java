@@ -19,7 +19,11 @@ public class ForwardChaining {
 	}
 	
 	void solved(){
-		System.out.println("Query " + query + " is true");
+		String answer = "";
+		for(String s : trueVar) {
+			answer += s + " ";
+		}
+		System.out.println("YES: " + answer);
 	}
 	
 	void askQuery() {
@@ -30,10 +34,10 @@ public class ForwardChaining {
 		while(!KBCompleted) {
 			KBCompleted = true;
 			//foreach equation
-			for(String[] e : equations) {
+			for(int e = 0; e < equations.size(); e++) {
 				//foreach variable in equation excluding the inferred
-				for(int i = 0; i < e.length-1; i++) {
-					if(trueVar.contains(e[i])) {
+				for(int i = 0; i < equations.get(e).length-1; i++) {
+					if(trueVar.contains(equations.get(e)[i])) {
 						//if variable is true
 						varIsTrue = true;
 					} else {
@@ -44,16 +48,16 @@ public class ForwardChaining {
 				}
 				//if the equation is true
 				if(varIsTrue) {
+					// add the inferred to true variables
+					trueVar.add(equations.get(e)[equations.get(e).length-1]);
 					//is the equation the query?
-					if(e[e.length-1] == query) {
+					if(equations.get(e)[equations.get(e).length-1].equals(query)) {
 						solved();
 					}
-					// add the inferred to true variables
-					trueVar.add(e[e.length-1]);
 					//add equation to solved
-					solvedEquations.add(e);
+					solvedEquations.add(equations.get(e));
 					//remove equation from the list because it's solved
-					equations.remove(e);
+					equations.remove(equations.get(e));
 					//KB hasn't been solved
 					KBCompleted = false;
 				}
