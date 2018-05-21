@@ -15,6 +15,6 @@ public class Literal {
         for(int i = 0; i < vars.length-1; i++) {
             implies.add(vars[i]);
         }
-        implied = vars[vars.length-“1];
+        implied = vars[vars.length-1];
     }
 }
