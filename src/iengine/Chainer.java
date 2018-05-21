@@ -39,8 +39,12 @@ public abstract class Chainer {
 	}
 	
 	public void interpretKB(List<String[]> KB){
-		//split the kb 
-		for(int i = KB.size()-1; i > 0; i--){
+		//split the kb
+		//stop null pointer error
+		if(trueVar == null || trueVar.isEmpty()) {
+			trueVar.add(new Variable(KB.get(KB.size()-1)[0]));
+		}
+		for(int i = KB.size()-2; i > 0; i--){
 			//if array size is 1 it's variable is true
 			if(KB.get(i).length == 1) {
 				Variable temp = initVariable(KB.get(i))[0];
