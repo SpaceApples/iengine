@@ -18,10 +18,20 @@ public abstract class Chainer {
     public Chainer() {}
 
     // output message for when KB has been solved
-    protected abstract void solved();
+    protected abstract void solved(boolean result);
 
     // loops through KB in attempt to prove query with given chaining method
-    public abstract boolean askQuery();
+    public abstract void askQuery();
+
+    public boolean hasTrueVar(String string) {
+
+        boolean result = false;
+        for(Variable trueVar : trueVars){
+            if(trueVar.getValue() == string)
+                result = true;
+        }
+        return result;
+    }
 
     // allocates KB data into appropriate variables for chaining
     public Variable[] initVariable(String[] vars) {

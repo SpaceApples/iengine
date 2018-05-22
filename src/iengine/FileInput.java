@@ -60,7 +60,6 @@ public class FileInput{
             	for(int x = 0; x < KB.get(y).length; x++) {
             		//System.out.print(KB.get(y)[x] + " ");
             	}
-            	System.out.println("");
             }
             
             //print queries

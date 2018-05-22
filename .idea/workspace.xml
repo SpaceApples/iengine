@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/src/iengine/BackwardChaining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iengine/BackwardChaining.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iengine/Chainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iengine/Chainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iengine/FileInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iengine/FileInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iengine/ForwardChaining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iengine/ForwardChaining.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackwardChaining.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BackwardChaining.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/iengine/BackwardChaining.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="33" column="93" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
+            <state relative-caret-position="801">
+              <caret line="76" column="10" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,13 +42,14 @@
       <file leaf-file-name="Chainer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iengine/Chainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+            <state relative-caret-position="262">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#197#207#0" expanded="true" />
-                <element signature="e#313#322#0" expanded="true" />
-                <element signature="e#440#449#0" expanded="true" />
+                <element signature="e#153#163#0" expanded="true" />
+                <element signature="e#263#273#0" expanded="true" />
+                <element signature="e#379#388#0" expanded="true" />
+                <element signature="e#506#515#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,35 +58,8 @@
       <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iengine/Variable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForwardChaining.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/iengine/ForwardChaining.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileInput.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/iengine/FileInput.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="66" column="50" lean-forward="true" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/iengine/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+            <state relative-caret-position="75">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -95,17 +70,38 @@
             <state relative-caret-position="180">
               <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
-                <element signature="e#650#651#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
                 <element signature="e#723#724#0" expanded="true" />
                 <element signature="e#764#765#0" expanded="true" />
-                <element signature="e#718#719#0" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
-                <element signature="e#879#880#0" expanded="true" />
-                <element signature="e#909#910#0" expanded="true" />
-                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
                 <element signature="e#920#921#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForwardChaining.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/iengine/ForwardChaining.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileInput.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/iengine/FileInput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="767">
+              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/iengine/test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -135,14 +131,14 @@
         <option value="$APPLICATION_CONFIG_DIR$/idea.properties" />
         <option value="$PROJECT_DIR$/src/iengine/fileInput.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/iengine/Variable.java" />
-        <option value="$PROJECT_DIR$/src/iengine/ForwardChaining.java" />
         <option value="$PROJECT_DIR$/src/iengine/Literal.java" />
         <option value="$PROJECT_DIR$/src/iengine/Main.java" />
         <option value="$PROJECT_DIR$/src/iengine/test.txt" />
+        <option value="$PROJECT_DIR$/src/iengine/FileInput.java" />
+        <option value="$PROJECT_DIR$/src/iengine/Variable.java" />
         <option value="$PROJECT_DIR$/src/iengine/BackwardChaining.java" />
         <option value="$PROJECT_DIR$/src/iengine/Chainer.java" />
-        <option value="$PROJECT_DIR$/src/iengine/FileInput.java" />
+        <option value="$PROJECT_DIR$/src/iengine/ForwardChaining.java" />
       </list>
     </option>
   </component>
@@ -241,12 +237,12 @@
       <workItem from="1526349373130" duration="2464000" />
       <workItem from="1526473564618" duration="1129000" />
       <workItem from="1526642520067" duration="635000" />
-      <workItem from="1526862167321" duration="23983000" />
+      <workItem from="1526862167321" duration="29122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29583000" />
+    <option name="totallyTimeSpent" value="34722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="22" width="1280" height="778" extended-state="6" />
@@ -294,18 +290,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iengine/BackwardChaining.java</url>
-          <line>40</line>
+          <line>42</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iengine/BackwardChaining.java</url>
-          <line>42</line>
+          <line>44</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -447,66 +443,10 @@
     <entry file="file://$PROJECT_DIR$/src/iengine/test_genericKB.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iengine/ForwardChaining.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iengine/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iengine/Chainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#197#207#0" expanded="true" />
-            <element signature="e#313#322#0" expanded="true" />
-            <element signature="e#440#449#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iengine/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iengine/Literal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#884#885#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iengine/BackwardChaining.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="33" column="93" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,8 +459,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/iengine/FileInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="66" column="50" lean-forward="true" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+        <state relative-caret-position="767">
+          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iengine/Literal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iengine/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iengine/Chainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#153#163#0" expanded="true" />
+            <element signature="e#263#273#0" expanded="true" />
+            <element signature="e#379#388#0" expanded="true" />
+            <element signature="e#506#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iengine/ForwardChaining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iengine/BackwardChaining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="76" column="10" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

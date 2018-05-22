@@ -11,7 +11,7 @@ public class ForwardChaining extends Chainer {
 	}
 
 	@Override
-	public void solved(){
+	public void solved(boolean result){
 		String answer = "";
 		for(Variable v : trueVars) {
 			answer += v.getValue() + " ";
@@ -20,7 +20,7 @@ public class ForwardChaining extends Chainer {
 	}
 
 	@Override
-	public boolean askQuery() {
+	public void askQuery() {
 		//track whether the KB cannot be completed any further
 		boolean KBCompleted = false;
 		//is the equation true?
@@ -48,8 +48,7 @@ public class ForwardChaining extends Chainer {
 					trueVars.add(lit.getImplied());
 					//is the equation the query?
 					if(lit.getImpliedValue().equals(query)) {
-						solved();
-						return varIsTrue;
+						solved(varIsTrue);
 					}
 					//add equation to solved
 					solvedLiterals.add(literals.get(e));
@@ -62,7 +61,6 @@ public class ForwardChaining extends Chainer {
 		}
 		//KB could not be completed any further so query is false
 		System.out.println("Query " + query + " is false");
-		return varIsTrue;
 	}
 
 }

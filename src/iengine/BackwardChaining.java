@@ -23,17 +23,19 @@ public class BackwardChaining extends Chainer {
 
     // output message for when KB has been solved
     @Override
-    public void solved() {}
+    public void solved(boolean result) {
+        if (result) {
+            // true result
+        }
+        else {
+            // false message
+        }
+    }
 
     // loops through KB in attempt to prove query with given chaining method
     @Override
-    public boolean askQuery() {
+    public void askQuery() {
 
-        for(int i = 0; i < literals.size(); i++) {
-            for (int j = 0; j < literals.get(i).getImpliers().length; j++)
-                System.out.println("Implier" + j + " " + literals.get(i).getImpliersValueAt(j));
-            System.out.println("Implied" + i + " " + literals.get(i).getImpliedValue());
-        }
         boolean KBCompleted = false;
         boolean varIsTrue = false;
         List<String> proven = new ArrayList<>();
@@ -42,33 +44,37 @@ public class BackwardChaining extends Chainer {
 
         while(toProves.size() > 0) {
             String toProve = toProves.remove();
-            System.out.println(literals.size());
-            for(int e = literals.size()-1; e >= 0; e--) {
-                Literal lit = literals.get(e);
+            //System.out.println(literals.size());
+            for(int i = literals.size()-1; i >= 0; i--) {
+                Literal lit = literals.get(i);
                 String implicitVal = lit.getImpliedValue();
                 Variable[] litImpliers = lit.getImpliers();
 
                 // if value already known to be true...
-                if (trueVars.contains(toProve)) {
+                if (this.hasTrueVar(toProve)) {
                     varIsTrue = true;
-                    System.out.println(toProve);
+                    //System.out.println(toProve);
                     proven.add(toProve); // add proven value to list
                     break;
                 }
                 else {
                     if(implicitVal.equals(toProve)) {
 
+                        varIsTrue = true;
+                        proven.add(toProve);
                         // for every implier of given literal...
-                        for (int i = 0; i < litImpliers.length; i++) {
+                        for (int k = 0; k < litImpliers.length; k++) {
                             // add to toProves queue
-                            toProves.add(litImpliers[i].getValue());
+                            toProves.add(litImpliers[k].getValue());
                         }
                         break;
                     }
                 }
             }
         }
-        return varIsTrue;
+        solved(varIsTrue);
+        //for (int i = 0; i < proven.size(); i++)
+        //    System.out.println(proven.get(i));
     }
 }
 
