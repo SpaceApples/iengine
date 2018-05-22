@@ -44,7 +44,7 @@ public abstract class Chainer {
         if(trueVars == null || trueVars.isEmpty()) {
             trueVars.add(new Variable(KB.get(KB.size()-1)[0]));
         }
-        for(int i = KB.size()-1; i > 0; i--){
+        for(int i = KB.size()-1; i >= 0; i--){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {
                 Variable temp = new Variable(KB.get(i)[0]);
