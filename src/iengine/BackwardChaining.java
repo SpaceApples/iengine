@@ -3,17 +3,18 @@ package iengine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.LinkedList;
 
 public class BackwardChaining extends Chainer {
 
 //    //contains all variables that are true
-//    List<String> trueVar = new ArrayList<String>();
+//    protected List<Variable> trueVar = new ArrayList<Variable>();
 //    //contains a list of all equations that infer
-//    List<String[]> equations = new ArrayList<String[]>();
+//    protected List<Literal> literals = new ArrayList<Literal>();
 //    //contains a list of completed equations that infer
-//    List<String[]> solvedEquations = new ArrayList<String[]>();
+//    protected List<Literal> solvedLiterals = new ArrayList<Literal>();
 //    //query to be found
-//    String query;
+//    protected String query;
 
     public BackwardChaining(List<String[]> KB, String _query) {
         query = _query;
@@ -21,24 +22,48 @@ public class BackwardChaining extends Chainer {
     }
 
     // output message for when KB has been solved
+    @Override
     public void solved() {}
 
     // loops through KB in attempt to prove query with given chaining method
-    public void askQuery() {
+    @Override
+    public boolean askQuery() {
         boolean KBCompleted = false;
-        Queue<String> toProves; // Queue of variables to prove
+        boolean varIsTrue = false;
+        List<String> proven = new ArrayList<>();
+        Queue<String> toProves = new LinkedList<>(); // Queue of variables to prove
         toProves.add(query);
 
-        while(!KBCompleted) {
+        while(toProves.size() > 0) {
             String toProve = toProves.remove();
-            for(int e = 0; e < equations.size())
-        }
-    }
+            System.out.println(literals.size());
+            for(int e = literals.size()-1; e >= 0; e--) {
+                Literal lit = literals.get(e);
+                String implicitVal = lit.getImpliedValue();
+                Variable[] litImpliers = lit.getImpliers();
 
-    // allocates KB data into appropriate variables for chaining
-    public void interpretKB(List<String[]> KB) {}
+                // if value already known to be true...
+                if (trueVars.contains(toProve)) {
+                    varIsTrue = true;
+                    proven.add(toProve); // add proven value to list
+                    break;
+                }
+                else {
+                    if(implicitVal == toProve) {
+
+                        // for every implier of given literal...
+                        for (int i = 0; i < litImpliers.length; i++) {
+                            // add to toProves queue
+                            toProves.add(litImpliers[i].getValue());
+                        }
+                    }
+                }
+            }
+        }
+        return varIsTrue;
+    }
 }
 
 // TT return yes and number of models
 // number of models is 2^N (N
-// counter for numebr of valid models
+// counter for number of valid models

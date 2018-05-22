@@ -3,30 +3,24 @@ package iengine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForwardChaining {
-	//contains all variables that are true
-	List<String> trueVar = new ArrayList<String>();
-	//contains a list of all equations that infer
-	List<String[]> equations = new ArrayList<String[]>();
-	//contains a list of completed equations that infer
-	List<String[]> solvedEquations = new ArrayList<String[]>();
-	//query to be found
-	String query;
-	
+public class ForwardChaining extends Chainer {
+
 	ForwardChaining(List<String[]> KB, String _query){
 		query = _query;
-		tellKB(KB);
+		interpretKB(KB);
 	}
-	
-	void solved(){
+
+	@Override
+	public void solved(){
 		String answer = "";
-		for(String s : trueVar) {
-			answer += s + " ";
+		for(Variable v : trueVars) {
+			answer += v.getValue() + " ";
 		}
 		System.out.println("YES: " + answer);
 	}
-	
-	void askQuery() {
+
+	@Override
+	public boolean askQuery() {
 		//track whether the KB cannot be completed any further
 		boolean KBCompleted = false;
 		//is the equation true?
@@ -34,10 +28,12 @@ public class ForwardChaining {
 		while(!KBCompleted) {
 			KBCompleted = true;
 			//foreach equation
-			for(int e = 0; e < equations.size(); e++) {
+			for(int e = 0; e < literals.size(); e++) {
+				//literal to be check if true or not
+				Literal lit = literals.get(e);
 				//foreach variable in equation excluding the inferred
-				for(int i = 0; i < equations.get(e).length-1; i++) {
-					if(trueVar.contains(equations.get(e)[i])) {
+				for(int i = 0; i < lit.getImpliers().length; i++) {
+					if(trueVars.contains(lit.getImplied())) {
 						//if variable is true
 						varIsTrue = true;
 					} else {
@@ -49,15 +45,15 @@ public class ForwardChaining {
 				//if the equation is true
 				if(varIsTrue) {
 					// add the inferred to true variables
-					trueVar.add(equations.get(e)[equations.get(e).length-1]);
+					trueVars.add(lit.getImplied());
 					//is the equation the query?
-					if(equations.get(e)[equations.get(e).length-1].equals(query)) {
+					if(lit.getImplied().equals(query)) {
 						solved();
 					}
 					//add equation to solved
-					solvedEquations.add(equations.get(e));
+					solvedLiterals.add(literals.get(e));
 					//remove equation from the list because it's solved
-					equations.remove(equations.get(e));
+					literals.remove(literals.get(e));
 					//KB hasn't been solved
 					KBCompleted = false;
 				}
@@ -65,20 +61,7 @@ public class ForwardChaining {
 		}
 		//KB could not be completed any further so query is false
 		System.out.println("Query " + query + " is false");
+		return varIsTrue;
 	}
-	
-	void tellKB(List<String[]> KB){
-		//split the kb 
-		for(String[] s : KB){
-			//if array size is 1 it's the clause is true
-			if(s.length == 1) {
-				trueVar.add(s[0]);
-			} 
-			else {
-				//else it's an a&b => x
-				equations.add(s);
-			}
-		}
-	}
-	
+
 }
