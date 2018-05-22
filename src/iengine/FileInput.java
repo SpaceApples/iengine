@@ -20,7 +20,9 @@ public class FileInput{
 		//split string using delimiters special characters require
 		String[] strArray = line.split(";");
 		for(int i = 0; i < strArray.length; i++) {
+			//System.out.println("Before: " + strArray[i]);
 			String[] term = strArray[i].replaceAll("\\s+", "").split("=>|&");
+			//System.out.println("After: " + term[0]);
 			KB.add(term);
 		}
 		
@@ -56,7 +58,7 @@ public class FileInput{
             //print terms
             for(int y = 0; y < KB.size(); y++) {
             	for(int x = 0; x < KB.get(y).length; x++) {
-            		System.out.print(KB.get(y)[x] + " ");
+            		//System.out.print(KB.get(y)[x] + " ");
             	}
             	System.out.println("");
             }

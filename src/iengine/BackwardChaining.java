@@ -28,6 +28,12 @@ public class BackwardChaining extends Chainer {
     // loops through KB in attempt to prove query with given chaining method
     @Override
     public boolean askQuery() {
+
+        for(int i = 0; i < literals.size(); i++) {
+            for (int j = 0; j < literals.get(i).getImpliers().length; j++)
+                System.out.println("Implier" + j + " " + literals.get(i).getImpliersValueAt(j));
+            System.out.println("Implied" + i + " " + literals.get(i).getImpliedValue());
+        }
         boolean KBCompleted = false;
         boolean varIsTrue = false;
         List<String> proven = new ArrayList<>();
@@ -45,17 +51,19 @@ public class BackwardChaining extends Chainer {
                 // if value already known to be true...
                 if (trueVars.contains(toProve)) {
                     varIsTrue = true;
+                    System.out.println(toProve);
                     proven.add(toProve); // add proven value to list
                     break;
                 }
                 else {
-                    if(implicitVal == toProve) {
+                    if(implicitVal.equals(toProve)) {
 
                         // for every implier of given literal...
                         for (int i = 0; i < litImpliers.length; i++) {
                             // add to toProves queue
                             toProves.add(litImpliers[i].getValue());
                         }
+                        break;
                     }
                 }
             }

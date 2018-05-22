@@ -23,20 +23,20 @@ public abstract class Chainer {
     public abstract boolean askQuery();
 
     // allocates KB data into appropriate variables for chaining
-    public Variable[] initVariable(String[] vars) {
-        Variable[] temp = new Variable[vars.length];
-        for(int v = 0; v < vars.length; v++) {
-            for(int i = 0; i < trueVars.size(); i++) {
-                if(trueVars.get(i).getValue() == vars[v]) {
-                    temp[v] = trueVars.get(i);
-                }
-                else {
-                    temp[v] = new Variable(vars[v]);
-                }
-            }
-        }
-        return temp;
-    }
+//    public Variable[] initVariable(String[] vars) {
+//        Variable[] temp = new Variable[vars.length];
+//        for(int v = 0; v < vars.length; v++) {
+//            for(int i = 0; i < trueVars.size(); i++) {
+//                if(trueVars.get(i).getValue() == vars[v]) {
+//                    temp[v] = trueVars.get(i);
+//                }
+//                else {
+//                    temp[v] = new Variable(vars[v]);
+//                }
+//            }
+//        }
+//        return temp;
+//    }
 
     public void interpretKB(List<String[]> KB){
         //split the kb
@@ -44,16 +44,18 @@ public abstract class Chainer {
         if(trueVars == null || trueVars.isEmpty()) {
             trueVars.add(new Variable(KB.get(KB.size()-1)[0]));
         }
-        for(int i = KB.size()-2; i > 0; i--){
+        for(int i = KB.size()-1; i > 0; i--){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {
-                Variable temp = initVariable(KB.get(i))[0];
+                Variable temp = new Variable(KB.get(i)[0]);
                 temp.setActive(true);
                 trueVars.add(temp);
             }
             else {
                 //else it's an a&b => x
-                Variable[] temp = initVariable(KB.get(i));
+                Variable[] temp = new Variable[KB.get(i).length];
+                for (int j = 0; j < temp.length; j++)
+                    temp[j] = new Variable(KB.get(i)[j]);
                 literals.add(new Literal(temp));
             }
         }
