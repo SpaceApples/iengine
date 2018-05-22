@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Chainer {
+	protected List<Variable> variables = new ArrayList<Variable>();
     //contains all variables that are true
     protected List<Variable> trueVars = new ArrayList<Variable>();
     //contains a list of all equations that infer
@@ -23,39 +24,44 @@ public abstract class Chainer {
     public abstract boolean askQuery();
 
     // allocates KB data into appropriate variables for chaining
-//    public Variable[] initVariable(String[] vars) {
-//        Variable[] temp = new Variable[vars.length];
-//        for(int v = 0; v < vars.length; v++) {
-//            for(int i = 0; i < trueVars.size(); i++) {
-//                if(trueVars.get(i).getValue() == vars[v]) {
-//                    temp[v] = trueVars.get(i);
-//                }
-//                else {
-//                    temp[v] = new Variable(vars[v]);
-//                }
-//            }
-//        }
-//        return temp;
-//    }
+    public Variable[] initVariable(String[] vars) {
+        Variable[] temp = new Variable[vars.length];
+        //foreach variable to be initialised
+        for(int v = 0; v < vars.length; v++) {
+        	boolean varExist = false;
+        	//Does variable exist?
+            for(int i = 0; i < variables.size(); i++) {
+                if(variables.get(i).getValue().equals(vars[v])) {
+                    temp[v] = variables.get(i);
+                    varExist = true;
+                    break;
+                }
+            }
+            //if Variable doesn't exist create one.
+            if(!varExist) {
+            	temp[v] = new Variable(vars[v]);
+                variables.add(temp[v]);
+            }
+        }
+        return temp;
+    }
 
     public void interpretKB(List<String[]> KB){
         //split the kb
         //stop null pointer error
-        if(trueVars == null || trueVars.isEmpty()) {
-            trueVars.add(new Variable(KB.get(KB.size()-1)[0]));
+        if(variables == null || variables.isEmpty()) {
+            variables.add(new Variable(KB.get(KB.size()-1)[0]));
         }
-        for(int i = KB.size()-1; i >= 0; i--){
+        for(int i = 0; i < KB.size(); i++){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {
-                Variable temp = new Variable(KB.get(i)[0]);
+                Variable temp = initVariable(KB.get(i))[0];
                 temp.setActive(true);
                 trueVars.add(temp);
             }
             else {
                 //else it's an a&b => x
-                Variable[] temp = new Variable[KB.get(i).length];
-                for (int j = 0; j < temp.length; j++)
-                    temp[j] = new Variable(KB.get(i)[j]);
+                Variable[] temp = initVariable(KB.get(i));
                 literals.add(new Literal(temp));
             }
         }

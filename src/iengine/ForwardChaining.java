@@ -33,7 +33,7 @@ public class ForwardChaining extends Chainer {
 				Literal lit = literals.get(e);
 				//foreach variable in equation excluding the inferred
 				for(int i = 0; i < lit.getImpliers().length; i++) {
-					if(trueVars.contains(lit.getImplied())) {
+					if(trueVars.contains(lit.getImpliers()[i])) {
 						//if variable is true
 						varIsTrue = true;
 					} else {
@@ -47,8 +47,9 @@ public class ForwardChaining extends Chainer {
 					// add the inferred to true variables
 					trueVars.add(lit.getImplied());
 					//is the equation the query?
-					if(lit.getImplied().equals(query)) {
+					if(lit.getImpliedValue().equals(query)) {
 						solved();
+						return varIsTrue;
 					}
 					//add equation to solved
 					solvedLiterals.add(literals.get(e));
