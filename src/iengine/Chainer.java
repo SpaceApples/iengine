@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Chainer {
     //contains all variables that are true
-    protected List<Variable> trueVar = new ArrayList<Variable>();
+    protected List<Variable> trueVars = new ArrayList<Variable>();
     //contains a list of all equations that infer
     protected List<Literal> literals = new ArrayList<Literal>();
     //contains a list of completed equations that infer
@@ -20,15 +20,15 @@ public abstract class Chainer {
     protected abstract void solved();
 
     // loops through KB in attempt to prove query with given chaining method
-    public abstract void askQuery();
+    public abstract boolean askQuery();
 
     // allocates KB data into appropriate variables for chaining
     public Variable[] initVariable(String[] vars) {
         Variable[] temp = new Variable[vars.length];
         for(int v = 0; v < vars.length; v++) {
-            for(int i = 0; i < trueVar.size(); i++) {
-                if(trueVar.get(i).getValue() == vars[v]) {
-                    temp[v] = trueVar.get(i);
+            for(int i = 0; i < trueVars.size(); i++) {
+                if(trueVars.get(i).getValue() == vars[v]) {
+                    temp[v] = trueVars.get(i);
                 }
                 else {
                     temp[v] = new Variable(vars[v]);
@@ -41,15 +41,15 @@ public abstract class Chainer {
     public void interpretKB(List<String[]> KB){
         //split the kb
         //stop null pointer error
-        if(trueVar == null || trueVar.isEmpty()) {
-            trueVar.add(new Variable(KB.get(KB.size()-1)[0]));
+        if(trueVars == null || trueVars.isEmpty()) {
+            trueVars.add(new Variable(KB.get(KB.size()-1)[0]));
         }
         for(int i = KB.size()-2; i > 0; i--){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {
                 Variable temp = initVariable(KB.get(i))[0];
                 temp.setActive(true);
-                trueVar.add(temp);
+                trueVars.add(temp);
             }
             else {
                 //else it's an a&b => x
