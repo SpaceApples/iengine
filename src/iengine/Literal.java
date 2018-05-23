@@ -5,8 +5,7 @@ public class Literal {
 
     private Variable[] impliers; // list of variables implying variable
     private Variable implied; // implied variable
-
-    // ttValue - truth table TBD
+    private Boolean isTrue = false;
 
     public Literal(Variable[] vars) {
         impliers = new Variable[vars.length-1];
@@ -43,5 +42,13 @@ public class Literal {
 
     public String getImpliersValueAt(int index) {
         return impliers[index].getValue();
+    }
+    
+    public void setIsTrue(boolean _isTrue) {
+    	isTrue = _isTrue;
+    }
+    
+    public boolean getIsTrue() {
+    	return isTrue;
     }
 }

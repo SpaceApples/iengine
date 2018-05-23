@@ -43,7 +43,6 @@ public abstract class Chainer {
             for(int i = 0; i < variables.size(); i++) {
                 if(variables.get(i).getValue().equals(vars[v])) {
                     temp[v] = variables.get(i);
-                    varExist = true;
                     break;
                 }
             }
