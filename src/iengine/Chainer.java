@@ -11,6 +11,8 @@ public abstract class Chainer {
     protected List<Literal> literals = new ArrayList<Literal>();
     //contains a list of completed equations that infer
     protected List<Literal> solvedLiterals = new ArrayList<Literal>();
+    // array of strings for variables proven for printing
+    protected List<String> provenVars = new ArrayList<>();
     //query to be found
     protected String query;
 
