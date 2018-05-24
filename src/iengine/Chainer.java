@@ -47,6 +47,7 @@ public abstract class Chainer {
             for(int i = 0; i < variables.size(); i++) {
                 if(variables.get(i).getValue().equals(vars[v])) {
                     temp[v] = variables.get(i);
+                    varExist = true;
                     break;
                 }
             }
@@ -59,8 +60,6 @@ public abstract class Chainer {
         return temp;
     }
 
-    public void storeVars(List<String[]> KB) {}
-
     public void interpretKB(List<String[]> KB){
         //split the kb
         //stop null pointer error
@@ -68,14 +67,11 @@ public abstract class Chainer {
             variables.add(new Variable(KB.get(KB.size()-1)[0]));
         }
 
-        // store all individual variables for TT
-        storeVars(KB);
-
         for(int i = 0; i < KB.size(); i++){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {
                 Variable temp = initVariable(KB.get(i))[0];
-                temp.setActive(true);
+                //temp.setActive(true); Not useful for the TT
                 trueVars.add(temp);
             }
             else {

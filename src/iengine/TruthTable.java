@@ -14,13 +14,18 @@ public class TruthTable extends Chainer{
 
 	@Override
 	protected void solved(boolean result) {
-		// TODO Auto-generated method stub
         System.out.println("YES: " + models + result);
 	}
 
 	@Override
 	public void askQuery() {
 		recursiveConstructTT(literals, variables, trueVars, 0);
+		if(models > 0) {
+			solved(true);
+		}
+		else {
+			solved(false);
+		}
 		
 	}
 	
