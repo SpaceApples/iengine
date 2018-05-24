@@ -10,17 +10,8 @@ public class Main {
         ForwardChaining fc = new ForwardChaining(file.getKB(), file.getQuery());
         BackwardChaining bc = new BackwardChaining(file.getKB(), file.getQuery());
         tt.askQuery();
-        System.out.println(tt.models);
-        int no = 1432; // test integer
-        String binary = Integer.toBinaryString(no); // convert to binary
-        System.out.println(binary);
-
-        // inspect variables list
-        for(int i = 0; i < bc.variables.size(); i++) {
-            System.out.println(bc.variables.get(i).getValue());
-        }
-        //fc.askQuery();
-        //bc.askQuery();
+        fc.askQuery();
+        bc.askQuery();
 
         // Final Main Implementation
         //FileInput file = new FileInput(args[1]);
