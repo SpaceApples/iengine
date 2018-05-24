@@ -5,6 +5,7 @@ import java.util.List;
 public class TruthTable extends Chainer{
 	//count of TT rows where query is true
 	int models = 0;
+
 	
 	TruthTable(List<String[]> KB, String _query){
 		query = _query;
@@ -14,7 +15,7 @@ public class TruthTable extends Chainer{
 	@Override
 	protected void solved(boolean result) {
 		// TODO Auto-generated method stub
-		
+        System.out.println("YES: " + models + result);
 	}
 
 	@Override
@@ -41,15 +42,14 @@ public class TruthTable extends Chainer{
 			_variables.get(n).setActive(true);
 			
 			for(Literal lit : _literals) {
-				if(checkTTStatement(lit)) {
+				if (checkTTStatement(lit)) {
 					lit.setIsTrue(true);
-				}
-				else {
+				} else {
 					lit.setIsTrue(false);
 				}
 			}
 			
-			recursiveContructTT(_literals, _variables, _trueVars, n+1);
+			recursiveConstructTT(_literals, _variables, _trueVars, n+1);
 			
 			_variables.get(n).setActive(false);
 			
@@ -62,7 +62,7 @@ public class TruthTable extends Chainer{
 				}
 			}
 			
-			recursiveContructTT(_literals, _variables, _trueVars, n+1);
+			recursiveConstructTT(_literals, _variables, _trueVars, n+1);
 		}
 		else {
 			boolean TTValid = true;
@@ -88,7 +88,6 @@ public class TruthTable extends Chainer{
 			}
 		}
 	}
-	
 }
 
 

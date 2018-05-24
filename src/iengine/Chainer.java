@@ -13,6 +13,8 @@ public abstract class Chainer {
     protected List<Literal> solvedLiterals = new ArrayList<Literal>();
     // array of strings for variables proven for printing
     protected List<String> provenVars = new ArrayList<>();
+    // contains all variables in a KB with no duplicates
+    protected List<Variable> allVars = new ArrayList<>();
     //query to be found
     protected String query;
 
@@ -57,12 +59,18 @@ public abstract class Chainer {
         return temp;
     }
 
+    public void storeVars(List<String[]> KB) {}
+
     public void interpretKB(List<String[]> KB){
         //split the kb
         //stop null pointer error
         if(variables == null || variables.isEmpty()) {
             variables.add(new Variable(KB.get(KB.size()-1)[0]));
         }
+
+        // store all individual variables for TT
+        storeVars(KB);
+
         for(int i = 0; i < KB.size(); i++){
             //if array size is 1 it's variable is true
             if(KB.get(i).length == 1) {

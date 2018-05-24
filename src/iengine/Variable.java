@@ -1,12 +1,13 @@
 package iengine;
 
 
-public class Variable{
+public class Variable {
 	private String value;
-	private boolean active = false;
+	private boolean active;
 	
-	Variable (String var){
+	Variable (String var) {
 		value = var;
+		active = false;
 	}
 	
 	public String getValue() {
