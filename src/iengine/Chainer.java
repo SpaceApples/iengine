@@ -13,8 +13,6 @@ public abstract class Chainer {
     protected List<Literal> solvedLiterals = new ArrayList<Literal>();
     // array of strings for variables proven for printing
     protected List<String> provenVars = new ArrayList<>();
-    // contains all variables in a KB with no duplicates
-    protected List<Variable> allVars = new ArrayList<>();
     //query to be found
     protected String query;
 

@@ -5,7 +5,7 @@ public class Literal {
 
     private Variable[] impliers; // list of variables implying variable
     private Variable implied; // implied variable
-    private Boolean isTrue = false;
+    private boolean isTrue = false;
 
     public Literal(Variable[] vars) {
         impliers = new Variable[vars.length-1];

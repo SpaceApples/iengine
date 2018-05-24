@@ -1,6 +1,5 @@
 package iengine;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ForwardChaining extends Chainer {
@@ -12,11 +11,16 @@ public class ForwardChaining extends Chainer {
 
 	@Override
 	public void solved(boolean result){
-		String answer = "";
-		for(Variable v : trueVars) {
-			answer += v.getValue() + " ";
+		if(result) {
+			String answer = "";
+			for(Variable v : trueVars) {
+				answer += v.getValue() + " ";
+			}
+			System.out.println("YES: " + answer);
 		}
-		System.out.println("YES: " + answer);
+		else {
+			System.out.println("NO");
+		}
 	}
 
 	@Override
@@ -25,6 +29,8 @@ public class ForwardChaining extends Chainer {
 		boolean KBCompleted = false;
 		//is the equation true?
 		boolean varIsTrue = false;
+		//used for solved to determine the output;
+		boolean queryTrue = false;
 		while(!KBCompleted) {
 			KBCompleted = true;
 			//foreach equation
@@ -48,7 +54,9 @@ public class ForwardChaining extends Chainer {
 					trueVars.add(lit.getImplied());
 					//is the equation the query?
 					if(lit.getImpliedValue().equals(query)) {
-						solved(varIsTrue);
+						queryTrue = true;
+						KBCompleted = true;
+						break;
 					}
 					//add equation to solved
 					solvedLiterals.add(literals.get(e));
@@ -60,7 +68,7 @@ public class ForwardChaining extends Chainer {
 			}
 		}
 		//KB could not be completed any further so query is false
-		System.out.println("Query " + query + " is false");
+		solved(queryTrue);
 	}
 
 }
