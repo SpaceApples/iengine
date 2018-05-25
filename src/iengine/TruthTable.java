@@ -42,10 +42,6 @@ public class TruthTable extends Chainer{
 		
 		
 		if(valid) {
-			for(int i = 0; i < variables.size(); i++) {
-				System.out.print(variables.get(i).getValue() + "    ");
-			}
-			System.out.println(" ");
 			//recursive construction of the TT
 			recursiveConstructTT(literals, variables, trueVars, 0);
 			//if Query is true
@@ -135,15 +131,9 @@ public class TruthTable extends Chainer{
 						//if so +1 possibility of query being true
 						models += 1;
 						isQueryTrue = true;
-						System.out.print("correct ");
 					}
 				}
 			}
-			
-			for(int i = 0; i < _variables.size(); i++) {
-				System.out.print(_variables.get(i).getActive() + " ");
-			}
-			System.out.println(" ");
 		}
 	}
 }

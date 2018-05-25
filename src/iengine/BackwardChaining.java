@@ -24,7 +24,7 @@ public class BackwardChaining extends Chainer {
         }
         else {
             // false message
-            System.out.println("NO: " + query + " is false.");
+            System.out.println("NO ");
         }
     }
 
