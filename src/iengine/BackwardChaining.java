@@ -1,6 +1,5 @@
 package iengine;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.LinkedList;
@@ -33,7 +32,6 @@ public class BackwardChaining extends Chainer {
     @Override
     public void askQuery() {
 
-        boolean KBCompleted = false;
         boolean varIsTrue = false;
 
         Queue<String> toProves = new LinkedList<>(); // Queue of variables to prove

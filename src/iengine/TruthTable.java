@@ -1,6 +1,5 @@
 package iengine;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TruthTable extends Chainer{
@@ -29,17 +28,39 @@ public class TruthTable extends Chainer{
 
 	@Override
 	public void askQuery() {
-		//recursive construction of the TT
-		recursiveConstructTT(literals, variables, trueVars, 0);
-		//if Query is true
-		if(isQueryTrue) {
-			solved(true);
+		boolean valid = false;
+		for(Literal lit : literals) {
+			if(lit.getImpliedValue().equals(query)) {
+				valid = true;
+			}
+		}
+		for(Variable var : trueVars) {
+			if(var.getValue().equals(query)) {
+				valid = true;
+			}
+		}
+		
+		
+		if(valid) {
+			for(int i = 0; i < variables.size(); i++) {
+				System.out.print(variables.get(i).getValue() + "    ");
+			}
+			System.out.println(" ");
+			//recursive construction of the TT
+			recursiveConstructTT(literals, variables, trueVars, 0);
+			//if Query is true
+			if(isQueryTrue) {
+				solved(true);
+			}
+			else {
+				solved(false);
+			}
 		}
 		else {
 			solved(false);
 		}
-
 	}
+	
 
 	private boolean checkTTStatement(Literal lit) {
 		//checks to see if the literal is true
@@ -89,6 +110,7 @@ public class TruthTable extends Chainer{
 			recursiveConstructTT(_literals, _variables, _trueVars, n+1);
 		}
 		else {
+			
 			//checks if the TT row constructed is valid or not
 			boolean TTValid = true;
 
@@ -113,112 +135,15 @@ public class TruthTable extends Chainer{
 						//if so +1 possibility of query being true
 						models += 1;
 						isQueryTrue = true;
+						System.out.print("correct ");
 					}
 				}
 			}
+			
+			for(int i = 0; i < _variables.size(); i++) {
+				System.out.print(_variables.get(i).getActive() + " ");
+			}
+			System.out.println(" ");
 		}
 	}
-
-	// TT Version 2
-
-    public void askQuery2() {
-        truthTable(literals, variables, trueVars, 0);
-    }
-
-
-    private boolean calcTTLiteral(Literal lit, List<Variable> vars) {
-        //calculates if a given literal is true based on TT row data
-        Variable[] impliers = lit.getImpliers();
-        Variable implied = lit.getImplied();
-        boolean isImpliers = true;
-        boolean isImplied = true;
-
-        // set impliers to TT row values
-        for(Variable imp : impliers) {
-            for (Variable v: vars){
-                // if variable found, set boolean to TT row equiv
-                if(imp.getValue().equals(v.getValue())) {
-                    imp.setActive(v.getActive());
-                }
-
-            }
-            if (imp.getActive() == false) // AND booleans together
-                isImpliers = false;
-        }
-        // set implied to TT row value
-        for (Variable v: vars){
-            if(implied.getValue().equals(query) && isImpliers)
-                isQueryTrue = true;
-            // if variable found, set boolean to TT row equiv
-            if(implied.getValue().equals(v.getValue())) {
-                implied.setActive(v.getActive());
-            }
-        }
-        if (implied.getActive() == false) // AND booleans together
-            isImplied = false;
-        // return literal boolean value
-        boolean checker = (isImpliers == isImplied);
-        return (isImpliers == isImplied);
-    }
-
-    private boolean calcTTVariable(Variable var, List<Variable> vars) {
-        for (Variable v : vars) {
-            if (v.getValue().equals(var.getValue()))
-                var.setActive(v.getActive());
-        }
-        // return variable boolean value
-        return (var.getActive());
-    }
-
-    private void truthTable(List<Literal> _literals, List<Variable> _variables, List<Variable> _trueVars, int n) {
-
-        int varNum = _variables.size();
-        int ttRows = (int)Math.pow(2, varNum) - 1;
-
-        for(int i = 0; i <= ttRows; i++) {
-
-            boolean isLiterals = true;
-            boolean isTrueVars = true;
-            isQueryTrue = false;
-
-            // create binary string for enumeration of variables
-            String[] rowBinary = Integer.toBinaryString(i).split("");
-            List<String> binaryVals = new ArrayList<>();
-
-            // copy values into ArrayList
-            for (String binary : rowBinary) {
-                binaryVals.add(binary);
-            }
-
-            // leftpad with 0's if number of bits not equal to varNum
-            while(binaryVals.size() != varNum) {
-                binaryVals.add(0, "0");
-            }
-
-            for (int j = 0; j < binaryVals.size(); j++) {
-                if (binaryVals.get(j).equals("1"))
-                    _variables.get(j).setActive(true);
-                if (binaryVals.get(j).equals("0"))
-                    _variables.get(j).setActive(false);
-            }
-
-            // AND all literals together
-            for (Literal lit : _literals) {
-                if (!calcTTLiteral(lit, _variables))
-                    isLiterals = false;
-            }
-
-            // AND all single variables
-            for (Variable v : _trueVars) {
-                if (!calcTTVariable(v, _variables))
-                    isTrueVars = false;
-            }
-
-            if (isLiterals && isTrueVars) {
-                models += 1;
-                isAnyRowTrue = true;
-            }
-        }
-        solved(isQueryTrue);
-    }
 }
